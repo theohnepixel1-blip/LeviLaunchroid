@@ -77,4 +77,5 @@ for start in (row, divider):  # later position first, so earlier offsets stay va
     text = text[:start] + 'android:visibility="gone"\n' + text[start:]
 open(path, "w", encoding="utf-8").write(text)
 PY
+python3 ci/ui_changes.py
 python3 ci/ui_changes_2.py
