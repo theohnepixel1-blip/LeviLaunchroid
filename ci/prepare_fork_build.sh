@@ -79,3 +79,4 @@ open(path, "w", encoding="utf-8").write(text)
 PY
 python3 ci/ui_changes.py
 python3 ci/ui_changes_2.py
+python3 ci/ui_changes_3.py
