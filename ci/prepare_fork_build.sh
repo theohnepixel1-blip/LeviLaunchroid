@@ -80,3 +80,4 @@ PY
 python3 ci/ui_changes.py
 python3 ci/ui_changes_2.py
 python3 ci/ui_changes_3.py
+python3 ci/ui_changes_4.py
