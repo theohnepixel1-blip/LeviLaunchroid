@@ -34,7 +34,7 @@
     <string name="font_license">This app uses the Misans font.</string>
     <string name="about_footer_github">GitHub: https://github.com/LiteLDev/LeviLauncher-Android</string>
     <string name="quick_actions_title">Quick Actions</string>
-    <string name="content_mgmt_section_title">Content Management</string>
+    <string name="content_mgmt_section_title">Storage</string>
     <string name="misc_section_title">Miscellaneous</string>
     <string name="view_all">View All →</string>
     <string name="content_management_subtitle">Manage worlds, resource packs and behavior packs</string>
@@ -293,7 +293,7 @@
     <string name="cannot_rename_installed">Cannot rename installed versions</string>
 
     <!-- Content Management -->
-    <string name="content_management">Content Management</string>
+    <string name="content_management">Storage</string>
     <string name="worlds_title">Worlds</string>
     <string name="resource_packs_title">Resource Packs</string>
     <string name="behavior_packs_title">Behavior Packs</string>
@@ -922,6 +922,7 @@
     <string name="theme_color_desc">The primary accent color of the application</string>
     <string name="preset_colors">PRESET COLORS</string>
     <string name="more_colors">MORE COLORS</string>
+    <string name="radiance_colors">RADIANCE</string>
     <string name="bg_image_title">Background Image</string>
     <string name="bg_image_desc">Select an image to use as background</string>
     <string name="bg_image_none">No image selected</string>

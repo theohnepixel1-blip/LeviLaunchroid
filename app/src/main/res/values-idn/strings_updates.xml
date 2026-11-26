@@ -147,7 +147,7 @@
     <string name="crumb_home">Beranda</string>
     <string name="crumb_instances">Instans</string>
     <string name="crumb_instance_settings">Pengaturan instans</string>
-    <string name="crumb_content">Pengelolaan konten</string>
+    <string name="crumb_content">Storage</string>
     <string name="crumb_mods">Mod</string>
     <string name="crumb_levimc_mods">Mod LeviMC</string>
     <string name="crumb_external_mods">Mod eksternal</string>

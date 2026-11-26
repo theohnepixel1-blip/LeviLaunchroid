@@ -34,7 +34,7 @@
     <string name="font_license">Bu uygulama Misans yazı tipini kullanmaktadır.</string>
     <string name="about_footer_github">GitHub: https://github.com/LiteLDev/LeviLauncher-Android</string>
     <string name="quick_actions_title">Hızlı İşlemler</string>
-    <string name="content_mgmt_section_title">İçerik Yönetimi</string>
+    <string name="content_mgmt_section_title">Storage</string>
     <string name="misc_section_title">Çeşitli</string>
     <string name="view_all">Tümünü Gör →</string>
     <string name="content_management_subtitle">Dünyaları, kaynak paketleri ve davranış paketlerini yönet</string>
@@ -293,7 +293,7 @@
     <string name="cannot_rename_installed">Yüklü sürümler yeniden adlandırılamaz</string>
 
     <!-- Content Management -->
-    <string name="content_management">İçerik Yönetimi</string>
+    <string name="content_management">Storage</string>
     <string name="worlds_title">Dünyalar</string>
     <string name="resource_packs_title">Kaynak Paketleri</string>
     <string name="behavior_packs_title">Davranış Paketleri</string>

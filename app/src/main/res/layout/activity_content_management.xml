@@ -14,60 +14,8 @@
         </LinearLayout>
         <com.google.android.material.button.MaterialButton android:layout_width="wrap_content" android:layout_height="36dp" android:id="@+id/storage_value" style="@style/Widget.Levi.Button.Secondary" android:minHeight="36dp" android:textSize="12sp" android:paddingStart="12dp" android:paddingEnd="12dp" app:iconGravity="textStart" app:iconSize="15dp" android:maxWidth="300dp" android:singleLine="true" android:ellipsize="end" android:contentDescription="@string/content_ui_storage_location" app:icon="@drawable/ic_ui_storage" />
     </LinearLayout>
-    <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:layout_marginTop="12dp" android:fillViewport="false" android:overScrollMode="ifContentScrolls" android:scrollbars="none">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:baselineAligned="false">
-                <com.google.android.material.card.MaterialCardView android:layout_width="0dp" android:layout_height="88dp" android:id="@+id/worlds_button" style="@style/Widget.Levi.ContentCard" android:layout_weight="1" android:clickable="true" android:focusable="true" android:foreground="?attr/selectableItemBackground">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:paddingStart="8dp" android:paddingEnd="8dp" android:paddingTop="8dp" android:paddingBottom="8dp">
-                        <FrameLayout android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/worlds_chip" android:background="@drawable/bg_ui_icon_chip">
-                            <ImageView android:layout_width="21dp" android:layout_height="21dp" android:id="@+id/worlds_icon" android:src="@drawable/ic_ui_globe" android:layout_gravity="center" android:importantForAccessibility="no" />
-                        </FrameLayout>
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Levi.Body" android:textSize="13sp" android:includeFontPadding="false" android:text="@string/worlds_category" android:id="@+id/worlds_count" android:textStyle="bold" android:gravity="center" android:maxLines="2" android:layout_marginTop="8dp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView android:layout_width="0dp" android:layout_height="88dp" android:id="@+id/skin_packs_button" style="@style/Widget.Levi.ContentCard" android:layout_weight="1" android:clickable="true" android:focusable="true" android:foreground="?attr/selectableItemBackground" android:layout_marginStart="10dp">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:paddingStart="8dp" android:paddingEnd="8dp" android:paddingTop="8dp" android:paddingBottom="8dp">
-                        <FrameLayout android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/skin_packs_chip" android:background="@drawable/bg_ui_icon_chip">
-                            <ImageView android:layout_width="21dp" android:layout_height="21dp" android:id="@+id/skin_packs_icon" android:src="@drawable/ic_tshirt" android:layout_gravity="center" android:importantForAccessibility="no" />
-                        </FrameLayout>
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Levi.Body" android:textSize="13sp" android:includeFontPadding="false" android:text="@string/skin_packs_category" android:id="@+id/skin_packs_count" android:textStyle="bold" android:gravity="center" android:maxLines="2" android:layout_marginTop="8dp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView android:layout_width="0dp" android:layout_height="88dp" android:id="@+id/screenshots_button" style="@style/Widget.Levi.ContentCard" android:layout_weight="1" android:clickable="true" android:focusable="true" android:foreground="?attr/selectableItemBackground" android:layout_marginStart="10dp">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:paddingStart="8dp" android:paddingEnd="8dp" android:paddingTop="8dp" android:paddingBottom="8dp">
-                        <FrameLayout android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/screenshots_chip" android:background="@drawable/bg_ui_icon_chip">
-                            <ImageView android:layout_width="21dp" android:layout_height="21dp" android:id="@+id/screenshots_icon" android:src="@drawable/ic_ui_camera" android:layout_gravity="center" android:importantForAccessibility="no" />
-                        </FrameLayout>
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Levi.Body" android:textSize="13sp" android:includeFontPadding="false" android:text="@string/content_ui_screenshots" android:id="@+id/screenshots_count" android:textStyle="bold" android:gravity="center" android:maxLines="2" android:layout_marginTop="8dp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:baselineAligned="false" android:layout_marginTop="10dp">
-                <com.google.android.material.card.MaterialCardView android:layout_width="0dp" android:layout_height="88dp" android:id="@+id/resource_packs_button" style="@style/Widget.Levi.ContentCard" android:layout_weight="1" android:clickable="true" android:focusable="true" android:foreground="?attr/selectableItemBackground">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:paddingStart="8dp" android:paddingEnd="8dp" android:paddingTop="8dp" android:paddingBottom="8dp">
-                        <FrameLayout android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/resource_packs_chip" android:background="@drawable/bg_ui_icon_chip">
-                            <ImageView android:layout_width="21dp" android:layout_height="21dp" android:id="@+id/resource_packs_icon" android:src="@drawable/ic_ui_image" android:layout_gravity="center" android:importantForAccessibility="no" />
-                        </FrameLayout>
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Levi.Body" android:textSize="13sp" android:includeFontPadding="false" android:text="@string/resource_packs_category" android:id="@+id/resource_packs_count" android:textStyle="bold" android:gravity="center" android:maxLines="2" android:layout_marginTop="8dp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView android:layout_width="0dp" android:layout_height="88dp" android:id="@+id/behavior_packs_button" style="@style/Widget.Levi.ContentCard" android:layout_weight="1" android:clickable="true" android:focusable="true" android:foreground="?attr/selectableItemBackground" android:layout_marginStart="10dp">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:paddingStart="8dp" android:paddingEnd="8dp" android:paddingTop="8dp" android:paddingBottom="8dp">
-                        <FrameLayout android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/behavior_packs_chip" android:background="@drawable/bg_ui_icon_chip">
-                            <ImageView android:layout_width="21dp" android:layout_height="21dp" android:id="@+id/behavior_packs_icon" android:src="@drawable/ic_ui_bolt" android:layout_gravity="center" android:importantForAccessibility="no" />
-                        </FrameLayout>
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Levi.Body" android:textSize="13sp" android:includeFontPadding="false" android:text="@string/behavior_packs_category" android:id="@+id/behavior_packs_count" android:textStyle="bold" android:gravity="center" android:maxLines="2" android:layout_marginTop="8dp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView android:layout_width="0dp" android:layout_height="88dp" android:id="@+id/servers_button" style="@style/Widget.Levi.ContentCard" android:layout_weight="1" android:clickable="true" android:focusable="true" android:foreground="?attr/selectableItemBackground" android:layout_marginStart="10dp">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:paddingStart="8dp" android:paddingEnd="8dp" android:paddingTop="8dp" android:paddingBottom="8dp">
-                        <FrameLayout android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/servers_chip" android:background="@drawable/bg_ui_icon_chip">
-                            <ImageView android:layout_width="21dp" android:layout_height="21dp" android:id="@+id/servers_icon" android:src="@drawable/ic_ui_server" android:layout_gravity="center" android:importantForAccessibility="no" />
-                        </FrameLayout>
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Levi.Body" android:textSize="13sp" android:includeFontPadding="false" android:text="@string/servers_category" android:id="@+id/servers_count" android:textStyle="bold" android:gravity="center" android:maxLines="2" android:layout_marginTop="8dp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="@string/content_management_subtitle" android:textAppearance="@style/TextAppearance.Levi.Caption" android:textSize="12sp" />
+    <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:fillViewport="false" android:overScrollMode="never" android:scrollbars="none">
+        <org.levimc.launcher.ui.widget.SegmentedControl android:id="@+id/category_tabs" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </HorizontalScrollView>
 </LinearLayout>

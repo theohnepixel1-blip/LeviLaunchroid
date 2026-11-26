@@ -9,7 +9,7 @@
     <string name="crumb_download">Download</string>
     <string name="crumb_instances">Instances</string>
     <string name="crumb_instance_settings">Instance settings</string>
-    <string name="crumb_content">Content management</string>
+    <string name="crumb_content">Storage</string>
     <string name="crumb_mods">Mods</string>
     <string name="crumb_curseforge">CurseForge</string>
     <string name="crumb_levimc_mods">LeviMC mods</string>

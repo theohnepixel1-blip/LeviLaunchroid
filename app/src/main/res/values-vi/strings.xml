@@ -34,7 +34,7 @@
     <string name="font_license">Ứng dụng đang sử dụng phông chữ Misans.</string>
     <string name="about_footer_github">GitHub: https://github.com/LiteLDev/LeviLauncher-Android</string>
     <string name="quick_actions_title">Thao tác nhanh</string>
-    <string name="content_mgmt_section_title">Quản lý nội dung</string>
+    <string name="content_mgmt_section_title">Storage</string>
     <string name="misc_section_title">Khác</string>
     <string name="view_all">Xem tất cả →</string>
     <string name="content_management_subtitle">Quản lý các thế giới, gói tài nguyên và gói hành vi</string>
@@ -293,7 +293,7 @@
     <string name="cannot_rename_installed">Không thể đổi tên các phiên bản đã cài đặt.</string>
 
     <!-- Content Management -->
-    <string name="content_management">Quản lý nội dung</string>
+    <string name="content_management">Storage</string>
     <string name="worlds_title">Thế giới</string>
     <string name="resource_packs_title">Gói tài nguyên</string>
     <string name="behavior_packs_title">Gói hành vi</string>

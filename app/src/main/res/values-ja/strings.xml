@@ -34,7 +34,7 @@
     <string name="font_license">このアプリは Misans フォントを使用しています。</string>
     <string name="about_footer_github">GitHub: https://github.com/LiteLDev/LeviLauncher-Android</string>
     <string name="quick_actions_title">クイックアクション</string>
-    <string name="content_mgmt_section_title">コンテンツ管理</string>
+    <string name="content_mgmt_section_title">Storage</string>
     <string name="misc_section_title">その他</string>
     <string name="view_all">すべて表示 →</string>
     <string name="content_management_subtitle">ワールド、リソースパック、ビヘイビアパックの管理</string>
@@ -293,7 +293,7 @@
     <string name="cannot_rename_installed">インストール済みのバージョンは名前変更できません</string>
 
     <!-- Content Management -->
-    <string name="content_management">コンテンツ管理</string>
+    <string name="content_management">Storage</string>
     <string name="worlds_title">ワールド</string>
     <string name="resource_packs_title">リソースパック</string>
     <string name="behavior_packs_title">ビヘイビアパック</string>

@@ -125,6 +125,12 @@ public class SegmentedControl extends LinearLayout {
         this.listener = listener;
     }
 
+    /** No segment is selected, so the next tap on any segment notifies the listener. */
+    public void clearSelection() {
+        selected = -1;
+        applyState();
+    }
+
     public int getSelectedIndex() {
         return selected;
     }

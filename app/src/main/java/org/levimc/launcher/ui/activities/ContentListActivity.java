@@ -47,6 +47,7 @@ import org.levimc.launcher.ui.animation.DynamicAnim;
 import org.levimc.launcher.ui.dialogs.CustomAlertDialog;
 import org.levimc.launcher.util.LauncherStorage;
 import org.levimc.launcher.ui.widget.ContentStorageSelector;
+import org.levimc.launcher.ui.widget.SegmentedControl;
 import org.levimc.launcher.ui.widget.LauncherPopup;
 import org.levimc.launcher.ui.widget.UiKit;
 
@@ -262,41 +263,9 @@ public class ContentListActivity extends BaseActivity {
 
         configureContentDirectories();
 
-        switch (contentType) {
-            case TYPE_WORLDS:
-                binding.titleText.setText(getString(R.string.content_ui_worlds_title));
-                binding.searchEditText.setHint(R.string.content_ui_search_worlds);
-                binding.customFlatButton.setVisibility(View.VISIBLE);
-                binding.selectButton.setVisibility(View.VISIBLE);
-                setupWorldsRecyclerView();
-                break;
-            case TYPE_SKIN_PACKS:
-                binding.titleText.setText(getString(R.string.skin_packs_title));
-                binding.selectButton.setVisibility(View.VISIBLE);
-                setupPacksRecyclerView();
-                break;
-            case TYPE_RESOURCE_PACKS:
-                binding.titleText.setText(getString(R.string.resource_packs_title));
-                binding.selectButton.setVisibility(View.VISIBLE);
-                setupPacksRecyclerView();
-                break;
-            case TYPE_BEHAVIOR_PACKS:
-                binding.titleText.setText(getString(R.string.behavior_packs_title));
-                binding.selectButton.setVisibility(View.VISIBLE);
-                setupPacksRecyclerView();
-                break;
-            case TYPE_SCREENSHOTS:
-                binding.titleText.setText(getString(R.string.content_ui_screenshots));
-                binding.searchRow.setVisibility(View.GONE);
-                setupScreenshotsRecyclerView();
-                break;
-            case TYPE_SERVERS:
-                binding.titleText.setText(getString(R.string.servers_category));
-                binding.customFlatButton.setText(getString(R.string.content_ui_add_server));
-                binding.customFlatButton.setVisibility(View.VISIBLE);
-                setupServersRecyclerView();
-                break;
-        }
+        if (contentType == TYPE_SERVERS) contentType = TYPE_WORLDS;
+        setupCategoryBar();
+        applyCategoryChrome();
 
         binding.customFlatButton.setOnClickListener(v -> {
             if (contentType == TYPE_SERVERS) showAddServerDialog();
@@ -545,43 +514,100 @@ public class ContentListActivity extends BaseActivity {
         binding.contentRecyclerView.post(() -> DynamicAnim.staggerRecyclerChildren(binding.contentRecyclerView));
     }
 
-    private void setupObservers() {
+    private static final int[] STORAGE_TYPES = {
+            TYPE_WORLDS, TYPE_RESOURCE_PACKS, TYPE_BEHAVIOR_PACKS, TYPE_SKIN_PACKS, TYPE_SCREENSHOTS
+    };
+
+    private void setupCategoryBar() {
+        binding.categoryTabs.setEqualWidth(false);
+        binding.categoryTabs.setTextSizeSp(12f);
+        binding.categoryTabs.setItems(
+                getString(R.string.worlds_category),
+                getString(R.string.resource_packs_category),
+                getString(R.string.behavior_packs_category),
+                getString(R.string.skin_packs_category),
+                getString(R.string.content_ui_screenshots));
+        int selected = 0;
+        for (int i = 0; i < STORAGE_TYPES.length; i++) {
+            if (STORAGE_TYPES[i] == contentType) selected = i;
+        }
+        binding.categoryTabs.setSelectedIndex(selected, false);
+        binding.categoryTabs.setOnSegmentSelectedListener(this::switchCategory);
+    }
+
+    private void switchCategory(int index) {
+        int type = STORAGE_TYPES[index];
+        if (type == contentType) return;
+        if (isSelectionMode()) exitSelectionMode();
+        contentType = type;
+        applyCategoryChrome();
+        binding.searchEditText.setText("");
+        binding.contentRecyclerView.stopScroll();
+        binding.contentRecyclerView.scrollToPosition(0);
+        loadContent();
+    }
+
+    private void applyCategoryChrome() {
+        binding.titleText.setText(getString(R.string.content_management));
+        binding.customFlatButton.setVisibility(View.GONE);
+        binding.selectButton.setVisibility(View.GONE);
+        binding.searchRow.setVisibility(View.VISIBLE);
         switch (contentType) {
             case TYPE_WORLDS:
-                contentManager.getWorldsLiveData().observe(this, worlds -> {
-                    allWorlds = worlds != null ? worlds : new ArrayList<>();
-                    if (worldsAdapter != null) {
-                        worldsAdapter.retainSelections(allWorlds);
-                        filterContent(binding.searchEditText.getText().toString());
-                    }
-                    showLoading(false);
-                });
+                binding.searchEditText.setHint(R.string.content_ui_search_worlds);
+                binding.customFlatButton.setVisibility(View.VISIBLE);
+                binding.selectButton.setVisibility(View.VISIBLE);
+                setupWorldsRecyclerView();
                 break;
             case TYPE_SKIN_PACKS:
-                contentManager.getSkinPacksLiveData().observe(this, packs -> updatePacksFromObserver(packs));
+                binding.selectButton.setVisibility(View.VISIBLE);
+                setupPacksRecyclerView();
                 break;
             case TYPE_RESOURCE_PACKS:
-                contentManager.getResourcePacksLiveData().observe(this, packs -> updatePacksFromObserver(packs));
+                binding.selectButton.setVisibility(View.VISIBLE);
+                setupPacksRecyclerView();
                 break;
             case TYPE_BEHAVIOR_PACKS:
-                contentManager.getBehaviorPacksLiveData().observe(this, packs -> updatePacksFromObserver(packs));
+                binding.selectButton.setVisibility(View.VISIBLE);
+                setupPacksRecyclerView();
                 break;
             case TYPE_SCREENSHOTS:
-                contentManager.getScreenshotsLiveData().observe(this, screenshots -> {
-                    List<org.levimc.launcher.core.content.ScreenshotItem> items = screenshots != null ? screenshots : new ArrayList<>();
-                    if (screenshotsAdapter != null) screenshotsAdapter.updateData(items);
-                    updateListState(items.size(), items.size(), "");
-                    showLoading(false);
-                });
+                binding.searchRow.setVisibility(View.GONE);
+                setupScreenshotsRecyclerView();
                 break;
             case TYPE_SERVERS:
-                contentManager.getServersLiveData().observe(this, servers -> {
-                    allServers = servers != null ? servers : new ArrayList<>();
-                    if (serversAdapter != null) filterContent(binding.searchEditText.getText().toString());
-                    showLoading(false);
-                });
+                binding.customFlatButton.setText(getString(R.string.content_ui_add_server));
+                binding.customFlatButton.setVisibility(View.VISIBLE);
+                setupServersRecyclerView();
                 break;
         }
+
+    }
+
+    private void setupObservers() {
+        contentManager.getWorldsLiveData().observe(this, worlds -> {
+            allWorlds = worlds != null ? worlds : new ArrayList<>();
+            if (contentType != TYPE_WORLDS || worldsAdapter == null) return;
+            worldsAdapter.retainSelections(allWorlds);
+            filterContent(binding.searchEditText.getText().toString());
+            showLoading(false);
+        });
+        contentManager.getSkinPacksLiveData().observe(this, packs -> {
+            if (contentType == TYPE_SKIN_PACKS) updatePacksFromObserver(packs);
+        });
+        contentManager.getResourcePacksLiveData().observe(this, packs -> {
+            if (contentType == TYPE_RESOURCE_PACKS) updatePacksFromObserver(packs);
+        });
+        contentManager.getBehaviorPacksLiveData().observe(this, packs -> {
+            if (contentType == TYPE_BEHAVIOR_PACKS) updatePacksFromObserver(packs);
+        });
+        contentManager.getScreenshotsLiveData().observe(this, screenshots -> {
+            if (contentType != TYPE_SCREENSHOTS || screenshotsAdapter == null) return;
+            List<org.levimc.launcher.core.content.ScreenshotItem> items = screenshots != null ? screenshots : new ArrayList<>();
+            screenshotsAdapter.updateData(items);
+            updateListState(items.size(), items.size(), "");
+            showLoading(false);
+        });
     }
 
     private void updatePacksFromObserver(List<ResourcePackItem> packs) {
@@ -1737,6 +1763,7 @@ public class ContentListActivity extends BaseActivity {
         final LinearLayout searchRow;
         final EditText searchEditText;
         final MaterialButton sortButton;
+        final SegmentedControl categoryTabs;
         final TextView stripInstanceValue;
         final TextView stripStorageValue;
         final RecyclerView contentRecyclerView;
@@ -1764,6 +1791,7 @@ public class ContentListActivity extends BaseActivity {
             searchRow = a.findViewById(R.id.search_row);
             searchEditText = a.findViewById(R.id.search_edit_text);
             sortButton = a.findViewById(R.id.sort_button);
+            categoryTabs = a.findViewById(R.id.category_tabs);
             stripInstanceValue = a.findViewById(R.id.strip_instance_value);
             stripStorageValue = a.findViewById(R.id.strip_storage_value);
             contentRecyclerView = a.findViewById(R.id.content_recycler_view);

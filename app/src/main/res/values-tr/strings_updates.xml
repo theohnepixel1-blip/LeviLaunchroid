@@ -148,7 +148,7 @@
     <string name="crumb_home">Ana sayfa</string>
     <string name="crumb_instances">Örnekler</string>
     <string name="crumb_instance_settings">Örnek ayarları</string>
-    <string name="crumb_content">İçerik yönetimi</string>
+    <string name="crumb_content">Storage</string>
     <string name="crumb_mods">Modlar</string>
     <string name="crumb_levimc_mods">LeviMC modları</string>
     <string name="crumb_external_mods">Harici modlar</string>

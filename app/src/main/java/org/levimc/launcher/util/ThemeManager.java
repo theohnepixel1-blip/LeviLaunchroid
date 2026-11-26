@@ -41,19 +41,13 @@ public class ThemeManager {
     }
 
     public void applyTheme() {
-        updateNightMode();
+        // Appearance is locked to the default dark colour.
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
     }
 
     public void setThemeMode(int mode) {
-        int previous = prefs.getInt(THEME_MODE_KEY, MODE_DARK);
-        prefs.edit().putInt(THEME_MODE_KEY, mode).apply();
-        updateNightMode();
-        if (previous != mode) {
-            sThemeChangeGeneration++;
-        }
-        if (activity != null && previous != mode) {
-            activity.recreate();
-        }
+        prefs.edit().putInt(THEME_MODE_KEY, MODE_DARK).apply();
+        applyTheme();
     }
 
     /** Sets the dark-mode window used by {@link #MODE_SCHEDULE} ("HH:mm"). */
@@ -120,18 +114,12 @@ public class ThemeManager {
     }
 
     public int getCurrentMode() {
-        int mode = prefs.getInt(THEME_MODE_KEY, MODE_DARK);
-        if (mode < MODE_FOLLOW_SYSTEM || mode > MODE_SUN) {
-            mode = MODE_DARK;
-            prefs.edit().putInt(THEME_MODE_KEY, mode).apply();
-        }
-        return mode;
+        return MODE_DARK;
     }
 
-    /** Quick toggle in the navigation, shown only for the manual light and dark modes (as on Windows). */
+    /** Theme selection is removed; the default dark colour stays on. */
     public boolean canQuickToggle() {
-        int mode = getCurrentMode();
-        return mode == MODE_LIGHT || mode == MODE_DARK;
+        return false;
     }
 
     public static int getThemeChangeGeneration() {
@@ -139,8 +127,7 @@ public class ThemeManager {
     }
 
     public static int getSavedMode(Context context) {
-        return context.getSharedPreferences(THEME_PREFS, Context.MODE_PRIVATE)
-                .getInt(THEME_MODE_KEY, MODE_DARK);
+        return MODE_DARK;
     }
 
     /** Today's local sunrise and sunset as "HH:mm", computed like the Windows launcher. */

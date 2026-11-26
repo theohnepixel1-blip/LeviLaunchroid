@@ -40,6 +40,35 @@ public final class ThemePalette {
             0xFF498205, 0xFF107C10, 0xFF767676, 0xFF4C4A48, 0xFF69797E,
     };
 
+
+    /** Extra Radiance accent colours, shown after the preset and Windows groups. */
+    public static final int[] RADIANCE = {
+            0xFFFF4D6D, // rose
+            0xFFFF6B35, // flame
+            0xFFFFB703, // gold
+            0xFFFB8500, // mango
+            0xFF80B918, // lime
+            0xFF2DC653, // spring
+            0xFF06D6A0, // mint
+            0xFF1B9AAA, // lagoon
+            0xFF4CC9F0, // ice
+            0xFF00BBF9, // sky
+            0xFF3A86FF, // cobalt
+            0xFF4361EE, // royal
+            0xFF7209B7, // grape
+            0xFF8338EC, // violet
+            0xFFC77DFF, // lavender
+            0xFF9D4EDD, // amethyst
+            0xFFF72585, // magenta
+            0xFFFF006E, // neon pink
+            0xFFB5179E, // orchid
+            0xFFEF476F, // watermelon
+            0xFFFF5D8F, // blush
+            0xFFFB5607, // burnt orange
+            0xFFFFD166, // sunflower
+            0xFF8AC926, // chartreuse
+    };
+
     /** Mixes {@code color} toward {@code target} by {@code amount} (0..1), like CSS color-mix. */
     public static int mix(int color, int target, float amount) {
         float a = Math.max(0f, Math.min(1f, amount));

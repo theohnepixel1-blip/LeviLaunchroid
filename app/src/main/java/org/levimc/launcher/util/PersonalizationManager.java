@@ -1041,4 +1041,6 @@ public class PersonalizationManager {
     public static final int[] PRESET_COLORS = ThemePalette.PRESETS;
 
     public static final int[] MORE_COLORS = ThemePalette.MORE;
+
+    public static final int[] RADIANCE_COLORS = ThemePalette.RADIANCE;
 }

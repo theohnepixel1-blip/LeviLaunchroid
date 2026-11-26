@@ -147,7 +147,7 @@
     <string name="crumb_home">Trang chủ</string>
     <string name="crumb_instances">Bản cài đặt</string>
     <string name="crumb_instance_settings">Cài đặt bản cài</string>
-    <string name="crumb_content">Quản lý nội dung</string>
+    <string name="crumb_content">Storage</string>
     <string name="crumb_mods">Mod</string>
     <string name="crumb_levimc_mods">Mod LeviMC</string>
     <string name="crumb_external_mods">Mod bên ngoài</string>

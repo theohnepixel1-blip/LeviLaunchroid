@@ -148,7 +148,7 @@
     <string name="crumb_home">Início</string>
     <string name="crumb_instances">Instâncias</string>
     <string name="crumb_instance_settings">Configurações da instância</string>
-    <string name="crumb_content">Gerenciamento de conteúdo</string>
+    <string name="crumb_content">Storage</string>
     <string name="crumb_mods">Mods</string>
     <string name="crumb_levimc_mods">Mods LeviMC</string>
     <string name="crumb_external_mods">Mods externos</string>

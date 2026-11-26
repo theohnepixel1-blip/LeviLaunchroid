@@ -34,7 +34,7 @@
     <string name="font_license">Cette application utilise la police Misans.</string>
     <string name="about_footer_github">GitHub : https://github.com/LiteLDev/LeviLauncher-Android</string>
     <string name="quick_actions_title">Actions rapides</string>
-    <string name="content_mgmt_section_title">Gestion de contenu</string>
+    <string name="content_mgmt_section_title">Storage</string>
     <string name="misc_section_title">Divers</string>
     <string name="view_all">Voir tout →</string>
     <string name="content_management_subtitle">Gérer les mondes, packs de ressources et comportements</string>
@@ -293,7 +293,7 @@
     <string name="cannot_rename_installed">Impossible de renommer les versions installées</string>
 
     <!-- Content Management -->
-    <string name="content_management">Gestion de contenu</string>
+    <string name="content_management">Storage</string>
     <string name="worlds_title">Mondes</string>
     <string name="resource_packs_title">Packs de ressources</string>
     <string name="behavior_packs_title">Packs de comportement</string>

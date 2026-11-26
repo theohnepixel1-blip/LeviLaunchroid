@@ -34,7 +34,7 @@
     <string name="font_license">Это приложение использует шрифт Misans.</string>
     <string name="about_footer_github">GitHub: https://github.com/LiteLDev/LeviLauncher-Android</string>
     <string name="quick_actions_title">Быстрые действия</string>
-    <string name="content_mgmt_section_title">Управление контентом</string>
+    <string name="content_mgmt_section_title">Storage</string>
     <string name="misc_section_title">Разное</string>
     <string name="view_all">Показать все →</string>
     <string name="content_management_subtitle">Управление мирами, ресурсами и аддонами</string>
@@ -293,7 +293,7 @@
     <string name="cannot_rename_installed">Невозможно переименовать установленные версии</string>
 
     <!-- Content Management -->
-    <string name="content_management">Управление контентом</string>
+    <string name="content_management">Storage</string>
     <string name="worlds_title">Миры</string>
     <string name="resource_packs_title">Наборы ресурсов</string>
     <string name="behavior_packs_title">Наборы поведения</string>

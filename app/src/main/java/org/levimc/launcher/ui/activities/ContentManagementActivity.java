@@ -157,14 +157,7 @@ public class ContentManagementActivity extends BaseActivity {
         binding.importContentButton.setOnClickListener(v -> showImportMethods());
 
         setupStorageSelector();
-        setupCategoryButtons();
-        contentManager.getCountsLiveData().observe(this, counts -> {
-            if (counts == null) return;
-            binding.worldsCount.setText(getString(R.string.content_category_count, getString(R.string.worlds_category), counts.worlds));
-            binding.resourcePacksCount.setText(getString(R.string.content_category_count, getString(R.string.resource_packs_category), counts.resourcePacks));
-            binding.skinPacksCount.setText(getString(R.string.content_category_count, getString(R.string.skin_packs_category), counts.skinPacks));
-            binding.behaviorPacksCount.setText(getString(R.string.content_category_count, getString(R.string.behavior_packs_category), counts.behaviorPacks));
-        });
+        setupCategoryBar();
     }
 
     private void showImportMethods() {
@@ -253,19 +246,26 @@ public class ContentManagementActivity extends BaseActivity {
         return ContentStorageSelector.label(this, type);
     }
 
-    private void setupCategoryButtons() {
-        UiKit.tintIconChip(binding.worldsChip, binding.worldsIcon, UiKit.BLUE);
-        UiKit.tintIconChip(binding.resourcePacksChip, binding.resourcePacksIcon, UiKit.PURPLE);
-        UiKit.tintIconChip(binding.behaviorPacksChip, binding.behaviorPacksIcon, UiKit.ORANGE);
-        UiKit.tintIconChip(binding.skinPacksChip, binding.skinPacksIcon, UiKit.PINK);
-        UiKit.tintIconChip(binding.serversChip, binding.serversIcon, UiKit.INDIGO);
-        UiKit.tintIconChip(binding.screenshotsChip, binding.screenshotsIcon, UiKit.TEAL);
-        binding.worldsButton.setOnClickListener(v -> openContentList(ContentListActivity.TYPE_WORLDS));
-        binding.skinPacksButton.setOnClickListener(v -> openContentList(ContentListActivity.TYPE_SKIN_PACKS));
-        binding.resourcePacksButton.setOnClickListener(v -> openContentList(ContentListActivity.TYPE_RESOURCE_PACKS));
-        binding.behaviorPacksButton.setOnClickListener(v -> openContentList(ContentListActivity.TYPE_BEHAVIOR_PACKS));
-        binding.screenshotsButton.setOnClickListener(v -> openContentList(ContentListActivity.TYPE_SCREENSHOTS));
-        binding.serversButton.setOnClickListener(v -> openContentList(ContentListActivity.TYPE_SERVERS));
+    private static final int[] STORAGE_TYPES = {
+            ContentListActivity.TYPE_WORLDS,
+            ContentListActivity.TYPE_RESOURCE_PACKS,
+            ContentListActivity.TYPE_BEHAVIOR_PACKS,
+            ContentListActivity.TYPE_SKIN_PACKS,
+            ContentListActivity.TYPE_SCREENSHOTS
+    };
+
+    private void setupCategoryBar() {
+        binding.categoryTabs.setEqualWidth(false);
+        binding.categoryTabs.setTextSizeSp(12f);
+        binding.categoryTabs.setItems(
+                getString(R.string.worlds_category),
+                getString(R.string.resource_packs_category),
+                getString(R.string.behavior_packs_category),
+                getString(R.string.skin_packs_category),
+                getString(R.string.content_ui_screenshots));
+        binding.categoryTabs.setSelectedIndex(0, false);
+        binding.categoryTabs.clearSelection();
+        binding.categoryTabs.setOnSegmentSelectedListener(index -> openContentList(STORAGE_TYPES[index]));
     }
 
     private void openContentList(int contentType) {
@@ -341,35 +341,6 @@ public class ContentManagementActivity extends BaseActivity {
 
         contentManager.configureStorageDirectories(worldsDir, resourcePacksDir, behaviorPacksDir, skinPacksDir, screenshotsDir, minecraftPeDir);
         contentManager.refreshCounts();
-        refreshExtraCounts(screenshotsDir, minecraftPeDir);
-    }
-
-    private void refreshExtraCounts(File screenshotsDir, File minecraftPeDir) {
-        long generation = countGeneration.incrementAndGet();
-        if (countExecutor.isShutdown()) return;
-        countExecutor.execute(() -> {
-            int screenshots = 0;
-            int servers = 0;
-            try {
-                ScreenshotManager shots = new ScreenshotManager();
-                shots.setScreenshotsDirectory(screenshotsDir);
-                screenshots = shots.getScreenshots().size();
-            } catch (Exception ignored) {
-            }
-            try {
-                ServerManager serverManager = new ServerManager();
-                serverManager.setMinecraftPeDirectory(minecraftPeDir);
-                servers = serverManager.getServers().size();
-            } catch (Exception ignored) {
-            }
-            int screenshotCount = screenshots;
-            int serverCount = servers;
-            mainHandler.post(() -> {
-                if (generation != countGeneration.get() || isFinishing() || isDestroyed()) return;
-                binding.screenshotsCount.setText(getString(R.string.content_category_count, getString(R.string.content_ui_screenshots), screenshotCount));
-                binding.serversCount.setText(getString(R.string.content_category_count, getString(R.string.servers_category), serverCount));
-            });
-        });
     }
 
     private void openOptionsEditor() {

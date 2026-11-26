@@ -148,7 +148,7 @@
     <string name="crumb_home">होम</string>
     <string name="crumb_instances">इंस्टेंस</string>
     <string name="crumb_instance_settings">इंस्टेंस की सेटिंग्स</string>
-    <string name="crumb_content">कॉन्टेंट प्रबंधन</string>
+    <string name="crumb_content">Storage</string>
     <string name="crumb_mods">मॉड्स</string>
     <string name="crumb_levimc_mods">LeviMC मॉड्स</string>
     <string name="crumb_external_mods">बाहरी मॉड्स</string>

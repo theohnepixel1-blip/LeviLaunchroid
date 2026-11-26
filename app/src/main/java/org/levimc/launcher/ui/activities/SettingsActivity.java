@@ -131,6 +131,7 @@ public class SettingsActivity extends BaseActivity {
     private boolean editDark;
     private LinearLayout presetGrid;
     private LinearLayout moreGrid;
+    private LinearLayout radianceGrid;
 
     // Wallpaper
     private ImageView bgImagePreview;
@@ -185,6 +186,7 @@ public class SettingsActivity extends BaseActivity {
                 editDark = savedInstanceState.getBoolean(KEY_EDIT_DARK, dark);
             }
         }
+        editDark = true;
 
         permissionsHandler = PermissionsHandler.getInstance();
         permissionResultLauncher = registerForActivityResult(
@@ -601,11 +603,13 @@ public class SettingsActivity extends BaseActivity {
 
         presetGrid = findViewById(R.id.color_preset_grid);
         moreGrid = findViewById(R.id.color_more_grid);
+        radianceGrid = findViewById(R.id.color_radiance_grid);
         View.OnLayoutChangeListener widthListener = (v, l, t, r, b, ol, ot, or, ob) -> {
             if (r - l != or - ol) v.post(this::rebuildSwatches);
         };
         presetGrid.addOnLayoutChangeListener(widthListener);
         moreGrid.addOnLayoutChangeListener(widthListener);
+        radianceGrid.addOnLayoutChangeListener(widthListener);
 
         SegmentedControl baseTabs = findViewById(R.id.base_mode_tabs);
         baseTabs.setItems(getString(R.string.settings_ui_base_none), getString(R.string.settings_ui_base_theme),
@@ -709,9 +713,11 @@ public class SettingsActivity extends BaseActivity {
         if (presetGrid == null) return;
         int selected = personalizationManager.getAccentColor(editDark) | 0xFF000000;
         boolean custom = !contains(PersonalizationManager.PRESET_COLORS, selected)
-                && !contains(PersonalizationManager.MORE_COLORS, selected);
+                && !contains(PersonalizationManager.MORE_COLORS, selected)
+                && !contains(PersonalizationManager.RADIANCE_COLORS, selected);
         fillSwatchGrid(presetGrid, PersonalizationManager.PRESET_COLORS, false, selected, custom);
-        fillSwatchGrid(moreGrid, PersonalizationManager.MORE_COLORS, true, selected, custom);
+        fillSwatchGrid(moreGrid, PersonalizationManager.MORE_COLORS, false, selected, custom);
+        fillSwatchGrid(radianceGrid, PersonalizationManager.RADIANCE_COLORS, true, selected, custom);
     }
 
     private static boolean contains(int[] colors, int color) {

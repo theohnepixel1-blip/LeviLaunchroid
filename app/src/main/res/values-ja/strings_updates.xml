@@ -147,7 +147,7 @@
     <string name="crumb_home">ホーム</string>
     <string name="crumb_instances">インスタンス</string>
     <string name="crumb_instance_settings">インスタンス設定</string>
-    <string name="crumb_content">コンテンツ管理</string>
+    <string name="crumb_content">Storage</string>
     <string name="crumb_mods">Mod</string>
     <string name="crumb_levimc_mods">LeviMC Mod</string>
     <string name="crumb_external_mods">外部Mod</string>

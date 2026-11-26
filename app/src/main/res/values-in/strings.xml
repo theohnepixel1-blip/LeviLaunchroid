@@ -34,7 +34,7 @@
     <string name="font_license">Aplikasi ini menggunakan font Misans..</string>
     <string name="about_footer_github">GitHub: https://github.com/LiteLDev/LeviLauncher-Android</string>
     <string name="quick_actions_title">Tindakan Cepat</string>
-    <string name="content_mgmt_section_title">Manajemen Konten</string>
+    <string name="content_mgmt_section_title">Storage</string>
     <string name="misc_section_title">Lain-lain</string>
     <string name="view_all">Lihat Semua →</string>
     <string name="content_management_subtitle">Kelola Dunia, Paket Sumber Daya and Paket Perilaku</string>
@@ -293,7 +293,7 @@
     <string name="cannot_rename_installed">Tidak dapat mengganti nama versi yang terinstal</string>
 
     <!-- Content Management -->
-    <string name="content_management">Manajemen Konten</string>
+    <string name="content_management">Storage</string>
     <string name="worlds_title">Dunia</string>
     <string name="resource_packs_title">Paket Sumber Daya</string>
     <string name="behavior_packs_title">Paket Perilaku</string>

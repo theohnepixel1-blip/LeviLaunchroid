@@ -150,7 +150,7 @@
     <string name="crumb_home">Главная</string>
     <string name="crumb_instances">Экземпляры</string>
     <string name="crumb_instance_settings">Настройки экземпляра</string>
-    <string name="crumb_content">Управление контентом</string>
+    <string name="crumb_content">Storage</string>
     <string name="crumb_mods">Моды</string>
     <string name="crumb_levimc_mods">Моды LeviMC</string>
     <string name="crumb_external_mods">Внешние моды</string>

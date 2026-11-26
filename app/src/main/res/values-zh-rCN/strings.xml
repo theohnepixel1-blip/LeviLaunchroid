@@ -34,7 +34,7 @@
     <string name="font_license">本软件使用 Misans 字体</string>
     <string name="about_footer_github">GitHub: https://github.com/LiteLDev/LeviLauncher-Android</string>
     <string name="quick_actions_title">快捷操作</string>
-    <string name="content_mgmt_section_title">内容管理</string>
+    <string name="content_mgmt_section_title">Storage</string>
     <string name="misc_section_title">其他</string>
     <string name="view_all">查看全部 →</string>
     <string name="content_management_subtitle">管理世界、资源包和行为包</string>
@@ -293,7 +293,7 @@
     <string name="cannot_rename_installed">无法重命名已安装的版本</string>
 
     <!-- Content Management -->
-    <string name="content_management">内容管理</string>
+    <string name="content_management">Storage</string>
     <string name="worlds_title">世界</string>
     <string name="resource_packs_title">资源包</string>
     <string name="behavior_packs_title">行为包</string>
