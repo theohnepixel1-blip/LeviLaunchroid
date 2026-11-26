@@ -82,3 +82,4 @@ python3 ci/ui_changes_2.py
 python3 ci/ui_changes_3.py
 python3 ci/ui_changes_4.py
 python3 ci/ui_changes_5.py
+python3 ci/ui_changes_6.py
