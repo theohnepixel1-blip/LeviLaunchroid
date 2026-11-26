@@ -148,10 +148,9 @@ public class MinecraftLauncher {
 
             activity.runOnUiThread(() -> {
                 try {
-                    if (!BuildConfig.SKIP_PLAY_STORE_CHECK && !PlayStoreValidator.isMinecraftFromPlayStore(activity)) {
-                        Log.w(TAG, "Launch denied: Minecraft is not verified as Play Store install");
-                        PlayStoreValidationDialog.showNotFromPlayStoreDialog(activity);
-                        notifyLaunchFailed(callback, new SecurityException("Minecraft is not verified as Play Store install"));
+                    if (!PlayStoreValidator.isMinecraftInstalled(activity)) {
+                        Log.w(TAG, "Launch denied: Minecraft is not installed");
+                        notifyLaunchFailed(callback, new IllegalStateException("Minecraft is not installed"));
                         return;
                     }
                     launchMinecraftActivity(sourceIntent, version, false);
